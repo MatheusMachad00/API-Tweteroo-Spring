@@ -1,19 +1,24 @@
 package com.tweteroo_spring.api.controller;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tweteroo_spring.api.dto.UserDTO;
+import com.tweteroo_spring.api.model.User;
+import com.tweteroo_spring.api.repository.UserRepository;
 
 @RestController
 @RequestMapping("/api/auth/sign-up")
 public class LoginController {
 
+  @Autowired
+  private UserRepository repository;
+
   @PostMapping
   public void createUser(@RequestBody UserDTO req) {
-    System.out.println(req);
+    repository.save(new User(req));
   }
 }
