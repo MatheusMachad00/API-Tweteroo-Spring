@@ -26,7 +26,7 @@ public class TweetsController {
   }
 
   @GetMapping
-  public List<Tweet> getAll(){
+  public List<Tweet> getAll() {
     return repository.findAll();
   }
 }
