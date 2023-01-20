@@ -14,6 +14,8 @@ import com.tweteroo_spring.api.dto.TweetDTO;
 import com.tweteroo_spring.api.model.Tweet;
 import com.tweteroo_spring.api.repository.TweetRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/api/tweets")
 public class TweetsController {
@@ -22,7 +24,7 @@ public class TweetsController {
   private TweetRepository repository;
 
   @PostMapping
-  public void createTweet(@RequestBody TweetDTO req) {
+  public void createTweet(@RequestBody @Valid TweetDTO req) {
     repository.save(new Tweet(req));
   }
 
